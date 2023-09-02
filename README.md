@@ -40,13 +40,13 @@
 
 ## 크롬 개발자 도구 Performance 패널
 
-![](performance_tab.png)
+![](./ㅎimg/performance_tab.png)
 
 ### CPU 차트, Network 차트
 
 - 제일 상단(Network 타임라인 위)
 
-![](p1.png)
+![](./ㅎimg/p1.png)
 
 #### CPU 차트
 
@@ -72,7 +72,7 @@
 
 ### Network 타임라인
 
-![](p2.png)
+![](./ㅎimg/p2.png)
 
 - Network 패널과 유사하게 서비스 로드 과정에서 네트워크 요청을 시간 순서에 따라 보여줌
 
@@ -85,7 +85,7 @@
 
 ### Frames, Timings, Main
 
-![](p3.png)
+![](./ㅎimg/p3.png)
 
 #### Timings
 
