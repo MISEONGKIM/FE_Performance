@@ -92,7 +92,14 @@
 
 ### 예제 프로젝트에 이미지 최적화 적용
 
-- Main.js
+- Squoosh에서 JPG => WebP로 변환
+  - width,heigth : 600
+  - 포맷 WebP
+- picture 태그 이용
+- WebP를 지원하지 않는 브라우저를 위해 JPG 원본 이미지도 Squoosh에서 변환
+  - width, height : 600
+
+* Main.js
 
 ```
 import main1 from "../assets/main1.jpg";
