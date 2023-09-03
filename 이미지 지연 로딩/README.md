@@ -40,3 +40,97 @@ observer.observe(document.querySelector('#target-element2'));
 
 * callback
   - 첫번째 인자(entries) : 가시성이 변한 요소를 배열 형태로 전달
+
+## 예제 프로젝트에 적용
+
+### IntersectionObserver 적용 전
+
+    ```
+    function Card(props) {
+        return (
+            <div className="Card text-center">
+                <img src={props.image}/>
+                <div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
+                    {props.children}
+                </div>
+            </div>
+        );
+    }
+    ```
+
+### IntersectionObserver 적용 후
+
+```
+function Card(props) {
+const imgRef = useRef(null);
+
+useEffect(() => {
+    const options = {};
+    const callback = (entries, observer) => {
+    console.log("Entries", entries);
+    };
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(imgRef.current);
+
+    return () => observer.disconnect();
+}, []);
+
+return (
+    <div className="Card text-center">
+    <img ref={imgRef} src={props.image} />
+    <div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
+        {props.children}
+    </div>
+    </div>
+);
+}
+
+```
+
+- 렌더링할 때 마다 인스턴스 생성이 안되도록 useEffect 내부에에서 observer 생성
+- 생성된 인스턴스 정리를 위해 useEffect return 문에 observer.disconnect 함수 호출
+
+#### isIntersecting
+
+- console.log 내용
+  ![](b.png)
+  - 가장 중요한 값인 **isIntersecting** : 해당 요소가 뷰포트 내에 들어왔는지 여부
+
+* 화면에 이미지가 보이는 순간, 즉 콜백이 실행되는 순간에 이미지를 로드
+* **이미지 로딩은 img 태그에 src가 할당되는 순간 일어남**
+
+- 따라서 <span style='background-color : #fff5b1; color:black;'>**최초에 img 태그에 src값을 할당하지 않다가, 콜백이 실행되는 순간 할당함으로써 이미지 지연 로딩을 적용**</span>
+  - img태그에 src 대신 data-src에 주소 넣음
+
+```
+function Card(props) {
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const options = {};
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        console.log("is intersecting", entry.target.dataset.src);
+        entry.target.src = entry.target.dataset.src;
+        observer.unobserve(entry.target);
+      });
+    };
+    const observer = new IntersectionObserver(callback, options);
+    observer.observe(imgRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="Card text-center">
+      <img ref={imgRef} data-src={props.image} />
+      <div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
+        {props.children}
+      </div>
+    </div>
+  );
+}
+```
+
+- observer.unobserver : 한 번 이미지를 로드한 후에는 다시 호출할 필요가 없으므로 해제하기 위해
