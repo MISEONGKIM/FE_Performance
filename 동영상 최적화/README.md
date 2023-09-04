@@ -37,7 +37,7 @@
 
 #### 적용 후
 
-````js
+```js
 import video from "../assets/banner-video.mp4";
 import video_webm from "../assets/banner-video.webm";
 
@@ -69,4 +69,8 @@ function BannerVideo() {
   * 동영상을 굳이 있는 그대로 보여 줄 필요가 없을 때, 배경만으로 가볍게 사용할 때 효과적
   ```css
   filter: blur(10px);
-````
+  ```
+
+```
+
+```
