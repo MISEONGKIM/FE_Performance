@@ -29,8 +29,7 @@
 
 * 기존 코드
 
-```
-
+```javascript
 /*
  * 파라미터로 넘어온 문자열에서 일부 특수문자를 제거하는 함수
  * (Markdown으로 된 문자열의 특수문자를 제거하기 위함)
@@ -73,12 +72,11 @@ function removeSpecialCharacter(str) {
 
 - 리팩토링 후
 
-```
+```javascript
 function removeSpecialCharacter(str) {
   // articles API에 글자수 90021자, 그러나 리스트 화면에 사용되는 글자수 대략 200자 정도라서 잘라줌
   let _str = str.substring(0, 300);
   _str = str.replace(/[#_*~&;![\]`>\n=\->]/g, "");
   return _str;
 }
-
 ```

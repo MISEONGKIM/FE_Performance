@@ -17,7 +17,7 @@ npx cra-bundle-analyzer
 
 - react-image-gallery 라이브러리만 분할하지 않고, 모달 컴포넌트 자체도 첫 페이지 로딩 시 바로 필요한 코드가 아니므로 함께 묶어서 분할
 
-```
+```javascript
 import React, { lazy, useState } from "react";
 ...
 // import ImageModal from './components/ImageModal'

@@ -9,7 +9,7 @@
 - 특정 파일 또는 폴더를 간단하게 웹에서 서비스할 수 있게 돕는 라이브러리
   - -s : SPA 서비스를 위해 매칭되지 않는 주소는 모두 index.html로 보내겠다는 옵션
 
-```
+```json
 "scripts": {
 
     "serve": "npm run build && node ./node_modules/serve/bin/serve.js  -s build",

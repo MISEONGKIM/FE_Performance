@@ -14,17 +14,16 @@
 
 * 컴포넌트는 import 함수를 이용하여 로드했는 데, 이미지는 이미지가 화면에 그려지는 시점, **즉 HTML 또는 CSS에서 이미지를 사용하는 시점**에 로드됨.
 * 이런 경우 외에 **자바스크립트로 이미지를 직접 로드**하는 방법이 한가지 있다. => **Image 객체를 사용하는 방법**
-  ```
+  ```javascript
   const img = new Image();
-  img.src = '{이미지 주소}'
+  img.src = "{이미지 주소}";
   ```
 
 #### 실제 예제 코드에 적용
 
 - **사전 로드할 이미지는 모달에서 가장 먼저 보이는 이미지로 넣어준다.**
 
-```
-
+```javascript
 function App() {
   const [showModal, setShowModal] = useState(false);
 
@@ -36,11 +35,7 @@ function App() {
       "https://stillmed.olympic.org/media/Photos/2016/08/20/part-1/20-08-2016-Football-Men-01.jpg?interpolation=lanczos-none&resize=*:800";
   }, []);
 
-  return (
-    <div className="App">
-     ...
-    </div>
-  );
+  return <div className="App">...</div>;
 }
 ```
 

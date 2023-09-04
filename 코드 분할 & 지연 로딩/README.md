@@ -51,8 +51,8 @@ npx cra-bundle-analyzer
 
 - 아래와 같이 했을 경우 해당 모듈은 빌드 시에 함께 번들링 된다.
 
-  ```
-  import { add } from './math';
+  ```javascript
+  import { add } from "./math";
 
   console.log(add(1, 4));
   ```
@@ -60,11 +60,11 @@ npx cra-bundle-analyzer
 - 아래와 같이 할 경우 빌드때가 아닌 런타임에 해당 모듈을 로드한다.
   이를 **동적 import**라고 함.
 
-  ```
-    import('add').then((module) => {
-      const { add } = module;
-      console.log(add(1, 4));
-    })
+  ```javascript
+  import("add").then((module) => {
+    const { add } = module;
+    console.log(add(1, 4));
+  });
   ```
 
 - **웹팩은 이 동적 import문을 만나면 코드를 분할하여 번들링한다.**
@@ -72,15 +72,17 @@ npx cra-bundle-analyzer
 * 위 방식의 문제점은 Promise형태로 모듈을 반환해주어 컴포넌트를 import해야하는 경우 Promise 밖으로 빼내야 함.
 * 리액트에서는 lazy와 suspense를 제공하여 이를 해결함.
 
-```
-import React, {Suspense} from 'react';
+```javascript
+import React, { Suspense } from "react";
 
-const SomeComponent = React.lazy(() => import('./SomeComponent'));
+const SomeComponent = React.lazy(() => import("./SomeComponent"));
 
 function MyComponent() {
-  return <Suspense fallback={<div> 로딩중 </div>}>
-    <SomeComponent />
-  </Suspense>
+  return (
+    <Suspense fallback={<div> 로딩중 </div>}>
+      <SomeComponent />
+    </Suspense>
+  );
 }
 ```
 
@@ -89,7 +91,7 @@ function MyComponent() {
 - 상단에 주석된 import는 기존 코드
 - 아래 lazy로 불러온다. switch문을 Suspense로 감쌈.
 
-```
+```javascript
 import React, { Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
@@ -113,7 +115,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ![](c.png)

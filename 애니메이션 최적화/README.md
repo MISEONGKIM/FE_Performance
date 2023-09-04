@@ -46,17 +46,18 @@ CPU에서 처리해야할 작업을 GPU에 위임하여 더욱 효율적으로 �
 - 최적화 전 소스코드
   - 애니메이션이 width에 적용되어 있음
 
-```
+```javascript
 const BarGraph = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: ${({width}) => width}%;
-    transition: width 1.5s ease;
-    height: 100%;
-    background: ${({isSelected}) => isSelected ? 'rgba(126, 198, 81, 0.7)' : 'rgb(198, 198, 198)'};
-    z-index: 1;
-`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: ${({ width }) => width}%;
+  transition: width 1.5s ease;
+  height: 100%;
+  background: ${({ isSelected }) =>
+    isSelected ? "rgba(126, 198, 81, 0.7)" : "rgb(198, 198, 198)"};
+  z-index: 1;
+`;
 ```
 
 - width => transform 속성으로 변경
@@ -64,7 +65,7 @@ const BarGraph = styled.div`
   - scaleX 안에 있는 width는 퍼센트 값이기 때문에 1이하의 실수로 값을 변환
   - transform-origin: center left => transform에 scaleX값만 설정하면 scale의 기준점이 기본적으로 중앙에 있기 때문에 가운데 정렬이 됨, 그래서 왼쪽으로 기준점을 변경
 
-```
+```javascript
 const BarGraph = styled.div`
   position: absolute;
   left: 0;

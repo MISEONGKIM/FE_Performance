@@ -15,22 +15,21 @@
 
 ## Intersection Observer
 
-```
-
+```javascript
 const options = {
-	root : null,
-	rootMargin : '0px',
-	threshold : 1.0,
-}
+  root: null,
+  rootMargin: "0px",
+  threshold: 1.0,
+};
 
 const callback = (entries, observer) => {
-	console.log('Entries', entries);
-}
+  console.log("Entries", entries);
+};
 
 const observer = new IntersectionObserver(callback, options);
 
-observer.observe(document.querySelector('#target-element1'));
-observer.observe(document.querySelector('#target-element2'));
+observer.observe(document.querySelector("#target-element1"));
+observer.observe(document.querySelector("#target-element2"));
 ```
 
 - options
@@ -45,7 +44,7 @@ observer.observe(document.querySelector('#target-element2'));
 
 ### IntersectionObserver 적용 전
 
-    ```
+    ```javascript
     function Card(props) {
         return (
             <div className="Card text-center">
@@ -60,31 +59,30 @@ observer.observe(document.querySelector('#target-element2'));
 
 ### IntersectionObserver 적용 후
 
-```
+```javascript
 function Card(props) {
-const imgRef = useRef(null);
+  const imgRef = useRef(null);
 
-useEffect(() => {
+  useEffect(() => {
     const options = {};
     const callback = (entries, observer) => {
-    console.log("Entries", entries);
+      console.log("Entries", entries);
     };
     const observer = new IntersectionObserver(callback, options);
     observer.observe(imgRef.current);
 
     return () => observer.disconnect();
-}, []);
+  }, []);
 
-return (
+  return (
     <div className="Card text-center">
-    <img ref={imgRef} src={props.image} />
-    <div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
+      <img ref={imgRef} src={props.image} />
+      <div className="p-5 font-semibold text-gray-700 text-xl md:text-lg lg:text-xl keep-all">
         {props.children}
+      </div>
     </div>
-    </div>
-);
+  );
 }
-
 ```
 
 - 렌더링할 때 마다 인스턴스 생성이 안되도록 useEffect 내부에에서 observer 생성
@@ -102,7 +100,7 @@ return (
 - 따라서 <span style='background-color : #fff5b1; color:black;'>**최초에 img 태그에 src값을 할당하지 않다가, 콜백이 실행되는 순간 할당함으로써 이미지 지연 로딩을 적용**</span>
   - img태그에 src 대신 data-src에 주소 넣음
 
-```
+```javascript
 function Card(props) {
   const imgRef = useRef(null);
 

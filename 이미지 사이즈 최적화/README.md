@@ -72,22 +72,22 @@
 
 #### 뷰포트에 따라 구분
 
-```
-	  <picture>
-		<source media="(min-width: 650px)" srcset='img_pink_flowers.jpg'/>
-		<source media="(min-width: 465px)" srcset='img_white_flowers.jpg'/>
-		<img src="img_orange_flowers.jpg" alt="Flowers" />
-	  </picture>
+```html
+<picture>
+  <source media="(min-width: 650px)" srcset="img_pink_flowers.jpg" />
+  <source media="(min-width: 465px)" srcset="img_white_flowers.jpg" />
+  <img src="img_orange_flowers.jpg" alt="Flowers" />
+</picture>
 ```
 
 #### 이미지 포맷에 따라 구분
 
-```
-	  <picture>
-		<source  srcset='photo.avif' type='image/avif'/>
-		<source  srcset='photo.webp' type='image/webp'/>
-		<img src="photo.jpg" alt="photo" />
-	  </picture>
+```html
+<picture>
+  <source srcset="photo.avif" type="image/avif" />
+  <source srcset="photo.webp" type="image/webp" />
+  <img src="photo.jpg" alt="photo" />
+</picture>
 ```
 
 ### 예제 프로젝트에 이미지 최적화 적용
@@ -101,7 +101,7 @@
 
 * Main.js
 
-```
+```javascript
 import main1 from "../assets/main1.jpg";
 import main2 from "../assets/main2.jpg";
 import main3 from "../assets/main3.jpg";
@@ -132,7 +132,7 @@ function MainPage(props) {
 - Card.jsx
   - 이미지 지연로딩을 위해 바로 srcset에 값을 넣지 않고 data-srcset에 값을 추가
 
-```
+```javascript
 import React, { useRef } from "react";
 import { useEffect } from "react";
 
@@ -173,7 +173,6 @@ function Card(props) {
 }
 
 export default Card;
-
 ```
 
 #### 최적화 전후 비교

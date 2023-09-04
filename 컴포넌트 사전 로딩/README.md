@@ -35,7 +35,7 @@
 
 * 버튼을 클랙할 때, 마우스 커서를 버튼 위에 올리고 클릭하기 대략 300~600밀리초 정도 시간 차가 있다. 아주 찰나의 순간이긴 하지만 브라우저가 새로운 파일을 로드하기에 충분
 
-```
+```javascript
 import React, { lazy, useState, Suspense } from "react";
 ...
 // import ImageModal from './components/ImageModal'
@@ -84,8 +84,7 @@ function App() {
 * 클래스형 컴포넌트라면 **componentDidMount** 시점
 * 함수형 컴포넌트라면 **useEffect**시점
 
-```
-
+```javascript
 function App() {
   const [showModal, setShowModal] = useState(false);
 
