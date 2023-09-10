@@ -160,5 +160,5 @@ export default BannerVideo;
   * Transfonter을 이용하여 Data-URI로 변환 가능, 앞서 변환한 WOFF2를 업로드 후 Base64 encode옵션 On설정해서 변환
     ![](f.png)
   * 변환이 완료되면 다운로드된 파일 중 stylesheet.css 파일을 열어서 url을 복사해서 기존 App.css 소스에서 woff2 경로대신 넣어준다.
-  * **Data-URI가 항상 좋은 것 아니다. 폰트 내용이 App.css에 포함된 것이므로 App.css의 다운로드 속도를 고려해야함. Data.URI가 포함된 만틈 css파일의 다운로드 속도가 느려질 거임.**
+  * **Data-URI가 항상 좋은 것 아니다. 폰트 내용이 App.css에 포함된 것이므로 App.css의 다운로드 속도를 고려해야함. Data.URI가 포함된 만큼 css파일의 다운로드 속도가 느려질 거임.**
     - 예제에선 서브넷을 통해 폰트 파일의 크기를 매우 작게 만들었기 때문에 Data-URI형태로 포함해도 큰 문제가 없었지만, 매우 큰 파일을 Data-URI 형태로 포함한다면 포함한 파일의 크기가 그만큼 커져 또 다른 병목 발생시킬 수 있음
