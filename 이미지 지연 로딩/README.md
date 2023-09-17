@@ -132,3 +132,33 @@ function Card(props) {
 ```
 
 - observer.unobserver : 한 번 이미지를 로드한 후에는 다시 호출할 필요가 없으므로 해제하기 위해
+
+## react-lazyload
+
+- Intersection Observer API와 동일한 기능을 지원하는 라이브러리
+
+```
+npm install --save react-lazyload
+```
+
+```js
+import LazyLoad from "react-lazyload";
+
+function Component() {
+  return (
+    <div>
+      <LazyLoad offset={1000}>
+        <img src="이미지 주소" />
+      </LazyLoad>
+    </div>
+  );
+}
+```
+
+- 이렇게 코드를 작성하면 LazyLoad의 자식으로 들어간 요소들은 화면에 표시되기 전까지는 렌더링되지 않다가 스크롤을 통해 화면에 들어오는 순간 로드됨.
+
+* 이미지뿐만 아니라 일반컴포넌트도 이 안에 넣어 지연로드 가능
+* Intersection Observer API를 이용해도 컴포넌트 지연 로드를 할 수 있지만 그걸 직접 구현하는 데는 시간이 많이 필요할 거임
+* offset 옵션을 이용하여 얼마나 미리 이미지를 로드할지 픽셀 값으로 넣어 준다.
+  - 이미지가 지연로드되기 때문에 초기화면의 리소스를 절약할 수 있는 것은 좋으나, 스크롤을 내려 화면에 이미지가 들어올 때 로드하기 때문에 처음에는 이미지가 보이지 않고 시간이 지나야 이미지가 보인다. 이런 문제를 offset옵션으로 해결
+  * offset을 100으로 설정하면 화면에 들어오기 100px전에 이미지를 로드하는 식
