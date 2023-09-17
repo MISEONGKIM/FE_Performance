@@ -11,7 +11,7 @@
 
     ![](a.png)
 
-* 좀 더 직접적인 원인 파악을 위해 <span style='background-color: #fff51d; color: black;'> Performance 패널에서 Experience 섹션을 보면 Layout Shift라는 이름의 빨간 막대가 표시되는 데, 이것은 해당 시간에 레이아웃 이동이 발생했다는 의미</span>
+* 좀 더 직접적인 원인 파악을 위해 <span style='background-color: #fff51d; color: black;'> Performance 패널에서 Layout Shift라는 이름의 막대가 표시되는 데, 이것은 해당 시간에 레이아웃 이동이 발생했다는 의미</span>
 
 ## 레이아웃 이동의 원인
 
@@ -81,3 +81,5 @@
   height: 100%;
 }
 ```
+
+![](b.png)
